@@ -14,24 +14,18 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.models;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Data;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+@Data
+@MappedSuperclass
+public class BaseModel {
 
-@SpringBootTest
-class ResourceManagementApplicationTests {
-
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
-    }
-
+    @Id
+    @Column(name = "id", nullable = false, unique = true)
+    private Integer id;
 }

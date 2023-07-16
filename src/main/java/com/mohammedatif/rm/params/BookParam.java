@@ -14,24 +14,6 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.params;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-@SpringBootTest
-class ResourceManagementApplicationTests {
-
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
-    }
-
-}
+public record BookParam(Integer authorId, Integer bookstoreId) { }

@@ -14,24 +14,21 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.mappers;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import com.mohammedatif.rm.models.BaseModel;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
 
-@SpringBootTest
-class ResourceManagementApplicationTests {
+/**
+ * Base mapper interface to define the generic model<->dto mapper</->
+ * @param <M> Model
+ * @param <D> Dto
+ */
+public interface BaseMapper <M extends BaseModel, D> {
+    M mapToModel(D dto);
+    D mapToDto(M model);
 
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
-    }
-
+    List<M> mapToModelList(List<D> dtoList);
+    List<D> mapToDtoList(List<M> modelList);
 }

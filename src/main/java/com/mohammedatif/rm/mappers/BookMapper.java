@@ -14,24 +14,12 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.mappers;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import com.mohammedatif.rm.dtos.BookDto;
+import com.mohammedatif.rm.models.Book;
+import org.mapstruct.Mapper;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-@SpringBootTest
-class ResourceManagementApplicationTests {
-
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
-    }
-
+@Mapper
+public interface BookMapper extends BaseMapper<Book, BookDto> {
 }

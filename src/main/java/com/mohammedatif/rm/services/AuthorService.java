@@ -14,24 +14,19 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.services;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import com.mohammedatif.rm.dtos.AuthorDto;
+import com.mohammedatif.rm.params.AuthorParam;
+import org.springframework.lang.NonNull;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
+import java.util.Optional;
 
-@SpringBootTest
-class ResourceManagementApplicationTests {
+public interface AuthorService {
+    Optional<AuthorDto> getAuthorById(int id);
+    List<AuthorDto> getAllAuthors(@NonNull AuthorParam param);
 
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
-    }
-
+    AuthorDto createAuthor(@NonNull AuthorDto request);
+    AuthorDto updateAuthor(int id, @NonNull AuthorDto request);
 }

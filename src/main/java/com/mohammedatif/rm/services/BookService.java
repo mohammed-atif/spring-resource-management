@@ -14,24 +14,19 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.services;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import com.mohammedatif.rm.dtos.BookDto;
+import com.mohammedatif.rm.params.BookParam;
+import org.springframework.lang.NonNull;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
+import java.util.Optional;
 
-@SpringBootTest
-class ResourceManagementApplicationTests {
+public interface BookService {
+    Optional<BookDto> getBookById(int id);
+    List<BookDto> getAllBooks(@NonNull BookParam param);
 
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
-    }
-
+    BookDto createBook(@NonNull BookDto request);
+    BookDto updateBook(int id, @NonNull BookDto request);
 }

@@ -14,24 +14,18 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.utils;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import lombok.experimental.UtilityClass;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+@UtilityClass
+public class Constants {
 
-@SpringBootTest
-class ResourceManagementApplicationTests {
-
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
+    @UtilityClass
+    public static class RequestParams {
+        public static final String BOOK_ID = "book-id";
+        public static final String BOOKSTORE_ID = "bookstore-id";
+        public static final String AUTHOR_ID = "author-id";
     }
 
 }

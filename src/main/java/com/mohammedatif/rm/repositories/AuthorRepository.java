@@ -14,24 +14,15 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm;
+package com.mohammedatif.rm.repositories;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import com.mohammedatif.rm.models.Author;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
 
-@SpringBootTest
-class ResourceManagementApplicationTests {
-
-    @Autowired
-    private ApplicationContext context;
-
-    @Test
-    void contextLoads() {
-        assertNotNull(context);
-    }
-
+@Repository
+public interface AuthorRepository extends CrudRepository<Author, Integer> {
+    List<Author> findAllBy();
 }
