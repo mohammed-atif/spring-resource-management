@@ -16,10 +16,10 @@
 
 package com.mohammedatif.rm.mappers;
 
-import com.mohammedatif.rm.dtos.AuthorDto;
-import com.mohammedatif.rm.models.Author;
+import com.mohammedatif.rm.dtos.AddressDto;
+import com.mohammedatif.rm.models.Address;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = {AddressMapper.class})
-public interface AuthorMapper extends BaseMapper<Author, AuthorDto>{
+@Mapper
+public interface AddressMapper extends BaseMapper<Address, AddressDto> {
 }

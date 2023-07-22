@@ -19,11 +19,13 @@ package com.mohammedatif.rm.services.impl;
 import com.mohammedatif.rm.dtos.AuthorDto;
 import com.mohammedatif.rm.mappers.AuthorMapper;
 import com.mohammedatif.rm.params.AuthorParam;
+import com.mohammedatif.rm.repositories.AddressRepository;
 import com.mohammedatif.rm.repositories.AuthorRepository;
 import com.mohammedatif.rm.services.AuthorService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,9 +36,11 @@ public class AuthorServiceImpl implements AuthorService {
     private static final AuthorMapper authorMapper = Mappers.getMapper(AuthorMapper.class);
 
     private final AuthorRepository authorRepository;
+    private final AddressRepository addressRepository;
 
-    public AuthorServiceImpl(final AuthorRepository authorRepository) {
+    public AuthorServiceImpl(final AuthorRepository authorRepository, final AddressRepository addressRepository) {
         this.authorRepository = authorRepository;
+        this.addressRepository = addressRepository;
     }
 
     @Override
@@ -50,8 +54,12 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    @Transactional
     public AuthorDto createAuthor(@NonNull final AuthorDto request) {
         final var requestModel = authorMapper.mapToModel(request);
+        final var updatedAddress = addressRepository.save(requestModel.getOfficeAddress());
+        requestModel.setOfficeAddress(updatedAddress);
+
         final var updatedModel = authorRepository.save(requestModel);
         return authorMapper.mapToDto(updatedModel);
     }

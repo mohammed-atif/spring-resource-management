@@ -14,12 +14,37 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm.mappers;
+package com.mohammedatif.rm.dtos;
 
-import com.mohammedatif.rm.dtos.AuthorDto;
-import com.mohammedatif.rm.models.Author;
-import org.mapstruct.Mapper;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-@Mapper(uses = {AddressMapper.class})
-public interface AuthorMapper extends BaseMapper<Author, AuthorDto>{
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class AddressDto {
+
+    private Integer id;
+
+    @NotEmpty
+    private String line1;
+
+    private String line2;
+
+    @NotEmpty
+    private String locality;
+
+    @NotEmpty
+    private String city;
+
+    @NotEmpty
+    private String state;
+
+    @NotEmpty
+    private String country;
+
+    @NotEmpty
+    @Size(min = 6, max = 6)
+    private String pincode;
 }

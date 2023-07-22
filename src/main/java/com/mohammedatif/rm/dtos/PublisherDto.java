@@ -14,12 +14,12 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm.mappers;
+package com.mohammedatif.rm.dtos;
 
-import com.mohammedatif.rm.dtos.AuthorDto;
-import com.mohammedatif.rm.models.Author;
-import org.mapstruct.Mapper;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
 
-@Mapper(uses = {AddressMapper.class})
-public interface AuthorMapper extends BaseMapper<Author, AuthorDto>{
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PublisherDto {
 }

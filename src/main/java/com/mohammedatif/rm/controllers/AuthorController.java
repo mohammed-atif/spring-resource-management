@@ -20,16 +20,21 @@ import com.mohammedatif.rm.dtos.AuthorDto;
 import com.mohammedatif.rm.params.AuthorParam;
 import com.mohammedatif.rm.services.AuthorService;
 import com.mohammedatif.rm.utils.Constants;
+import jakarta.validation.Valid;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Validated
 @RestController
+@RequestMapping("authors")
 public class AuthorController {
 
     private final AuthorService authorService;
@@ -44,7 +49,7 @@ public class AuthorController {
     }
 
     @PostMapping
-    public AuthorDto createAuthor(@RequestBody final AuthorDto request) {
+    public AuthorDto createAuthor(@RequestBody @Valid final AuthorDto request) {
         return authorService.createAuthor(request);
     }
 

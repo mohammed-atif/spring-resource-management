@@ -14,12 +14,27 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm.mappers;
+package com.mohammedatif.rm.exceptions;
 
-import com.mohammedatif.rm.dtos.AuthorDto;
-import com.mohammedatif.rm.models.Author;
-import org.mapstruct.Mapper;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 
-@Mapper(uses = {AddressMapper.class})
-public interface AuthorMapper extends BaseMapper<Author, AuthorDto>{
+import java.util.HashSet;
+import java.util.Set;
+
+@Data
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class ExceptionDto {
+    private final int status;
+    private Set<String> errors;
+
+    public void addError(@NonNull final String errorMessage) {
+        if (errors == null) {
+            errors = new HashSet<>();
+        }
+        errors.add(errorMessage);
+    }
 }

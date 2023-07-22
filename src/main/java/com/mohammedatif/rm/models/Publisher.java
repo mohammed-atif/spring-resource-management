@@ -14,12 +14,16 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm.mappers;
+package com.mohammedatif.rm.models;
 
-import com.mohammedatif.rm.dtos.AuthorDto;
-import com.mohammedatif.rm.models.Author;
-import org.mapstruct.Mapper;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Mapper(uses = {AddressMapper.class})
-public interface AuthorMapper extends BaseMapper<Author, AuthorDto>{
+@Data
+@Entity
+@Table(name = "publishers")
+@EqualsAndHashCode(callSuper = true)
+public class Publisher extends BaseModel {
 }

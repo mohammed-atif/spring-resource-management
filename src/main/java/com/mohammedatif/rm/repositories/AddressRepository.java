@@ -14,12 +14,12 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm.mappers;
+package com.mohammedatif.rm.repositories;
 
-import com.mohammedatif.rm.dtos.AuthorDto;
-import com.mohammedatif.rm.models.Author;
-import org.mapstruct.Mapper;
+import com.mohammedatif.rm.models.Address;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-@Mapper(uses = {AddressMapper.class})
-public interface AuthorMapper extends BaseMapper<Author, AuthorDto>{
+@Repository
+public interface AddressRepository extends CrudRepository<Address, Integer> {
 }

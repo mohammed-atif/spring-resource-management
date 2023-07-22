@@ -14,12 +14,19 @@
  *    limitations under the License.
  */
 
-package com.mohammedatif.rm.mappers;
+package com.mohammedatif.rm.enums;
 
-import com.mohammedatif.rm.dtos.AuthorDto;
-import com.mohammedatif.rm.models.Author;
-import org.mapstruct.Mapper;
+import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@Mapper(uses = {AddressMapper.class})
-public interface AuthorMapper extends BaseMapper<Author, AuthorDto>{
+@RequiredArgsConstructor
+public enum Gender {
+    MALE("male"),
+    FEMALE("female"),
+    OTHERS("others");
+
+    @Getter
+    @JsonValue
+    private final String value;
 }
