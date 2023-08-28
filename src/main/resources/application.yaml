@@ -15,3 +15,7 @@ spring:
     hibernate:
       ddl-auto: 'create-drop'
 
+rm:
+  spring-events:
+    async: false
+
