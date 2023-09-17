@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 import org.springframework.context.event.EventListener;
 import org.springframework.lang.NonNull;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -66,7 +65,6 @@ public class BookStoreServiceImpl implements BookStoreService {
         return null;
     }
 
-    @Async
     @EventListener(condition = "#event.operationType.name() == 'CREATED'")
     public void onAuthorAdded(final AuthorResourceEvent event) {
         log.info("Author Added {}", event.getResourceId());
