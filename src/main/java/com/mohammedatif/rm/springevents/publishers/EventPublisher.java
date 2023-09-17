@@ -16,22 +16,8 @@
 
 package com.mohammedatif.rm.springevents.publishers;
 
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
 
-@Component
-public class SpringEventPublisherImpl implements EventPublisher<ApplicationEvent> {
-
-    private final ApplicationEventPublisher applicationEventPublisher;
-
-    public SpringEventPublisherImpl(final ApplicationEventPublisher applicationEventPublisher) {
-        this.applicationEventPublisher = applicationEventPublisher;
-    }
-
-    @Override
-    public void publishEvent(@NonNull final ApplicationEvent applicationEvent) {
-        applicationEventPublisher.publishEvent(applicationEvent);
-    }
+public interface EventPublisher<T> {
+    void publishEvent(@NonNull T applicationEvent);
 }

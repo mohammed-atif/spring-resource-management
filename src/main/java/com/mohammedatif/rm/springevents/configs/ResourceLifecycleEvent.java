@@ -22,22 +22,26 @@ import lombok.Setter;
 import org.springframework.context.ApplicationEvent;
 
 @Setter
+@Getter
 @EqualsAndHashCode(callSuper = true)
-public abstract class ResourceLifecycleEvent<T> extends ApplicationEvent {
+public abstract class ResourceLifecycleEvent extends ApplicationEvent {
 
-    private final Class<T> resourceClass;
-
-    @Getter
-    private final String resourceId;
-
+    private final int resourceId;
+    private final OperationType operationType;
 
     protected ResourceLifecycleEvent(
             final Object source,
-            final Class<T> resourceClass,
-            final String resourceId
+            final int resourceId,
+            final OperationType operationType
     ) {
         super(source);
-        this.resourceClass = resourceClass;
         this.resourceId = resourceId;
+        this.operationType = operationType;
+    }
+
+    public enum OperationType {
+        CREATED,
+        UPDATED,
+        DELETED
     }
 }

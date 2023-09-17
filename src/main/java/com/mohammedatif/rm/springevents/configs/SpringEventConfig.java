@@ -35,5 +35,4 @@ public class SpringEventConfig {
         eventMulticaster.setTaskExecutor(new SimpleAsyncTaskExecutor());
         return eventMulticaster;
     }
-
 }

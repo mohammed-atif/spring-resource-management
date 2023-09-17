@@ -21,13 +21,18 @@ import com.mohammedatif.rm.mappers.BookStoreMapper;
 import com.mohammedatif.rm.params.BookStoreParam;
 import com.mohammedatif.rm.repositories.BookStoreRepository;
 import com.mohammedatif.rm.services.BookStoreService;
+import com.mohammedatif.rm.springevents.resources.AuthorResourceEvent;
+import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
+import org.springframework.context.event.EventListener;
 import org.springframework.lang.NonNull;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class BookStoreServiceImpl implements BookStoreService {
 
@@ -59,5 +64,24 @@ public class BookStoreServiceImpl implements BookStoreService {
     @Override
     public BookStoreDto updateBookStore(final int id, @NonNull final BookStoreDto request) {
         return null;
+    }
+
+    @Async
+    @EventListener(condition = "#event.operationType.name() == 'CREATED'")
+    public void onAuthorAdded(final AuthorResourceEvent event) {
+        log.info("Author Added {}", event.getResourceId());
+        throw new RuntimeException();
+    }
+
+    @EventListener(condition = "#event.operationType.name() == 'UPDATED'")
+    public void onAuthorUpdated(final AuthorResourceEvent event) {
+        log.info("Author Added {}", event.getResourceId());
+        throw new RuntimeException();
+    }
+
+    @EventListener(condition = "#event.operationType.name() == 'REMOVED'")
+    public void onAuthorRemoved(final AuthorResourceEvent event) {
+        log.info("Author Added {}", event.getResourceId());
+        throw new RuntimeException();
     }
 }

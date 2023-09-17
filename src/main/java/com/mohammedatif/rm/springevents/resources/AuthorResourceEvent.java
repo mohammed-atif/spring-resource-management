@@ -14,11 +14,12 @@
  *  limitations under the License.
  */
 
-package com.mohammedatif.rm.springevents.publishers;
+package com.mohammedatif.rm.springevents.resources;
 
-import org.springframework.context.ApplicationEvent;
-import org.springframework.lang.NonNull;
+import com.mohammedatif.rm.springevents.configs.ResourceLifecycleEvent;
 
-public interface LocalEventPublisher {
-    void publishEvent(@NonNull ApplicationEvent applicationEvent);
+public class AuthorResourceEvent extends ResourceLifecycleEvent {
+    public AuthorResourceEvent(final Object source, final int resourceId, final OperationType operationType) {
+        super(source, resourceId, operationType);
+    }
 }
